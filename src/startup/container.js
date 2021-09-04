@@ -15,7 +15,7 @@ const { HomeService, UserService, IdeaService, CommentService } = require("../se
 const { HomeController, UserController, IdeaController, CommentController } = require("../controllers");
 
 // routes
-const { HomeRoutes } = require("../routes/index.routes");
+const { HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes } = require("../routes/index.routes");
 const Routes = require("../routes");
 
 // models
@@ -47,6 +47,10 @@ container
   })
   .register({
     HomeRoutes: asFunction(HomeRoutes).singleton(), //-> lo pasamos como funcion, xque fue una funcion lo que exportamos de home.routes.js
+    UserRoutes: asFunction(UserRoutes).singleton(), 
+    IdeaRoutes: asFunction(IdeaRoutes).singleton(), 
+    CommentRoutes: asFunction(CommentRoutes).singleton(), 
+
   })
   .register({
     User: asValue(User),
