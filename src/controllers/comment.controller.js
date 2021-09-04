@@ -24,9 +24,9 @@ class CommentController {
     return response.send(deleteComment);
   }
 
-  async getIdeasComments(request, response) {
+  async getIdeaComments(request, response) {
     const { ideaId } = request.params;
-    const comments = await _commentService.getIdeasComments(ideaId);
+    const comments = await _commentService.getIdeaComments(ideaId);
     return response.send(comments);
   }
 
