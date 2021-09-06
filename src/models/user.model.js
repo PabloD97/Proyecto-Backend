@@ -39,13 +39,13 @@ UserSchema.methods.comparePasswords = function (password) {
 UserSchema.pre("save", async function (next) {
   const user = this;
 
-  if (user.isModified("password")) {
+  if (!user.isModified("password")) {
     return next();
   }
 
   const salt = genSaltSync(10);
-  const hashPassword = hashSync(user.password, salt);
-  user.password = hashPassword;
+  const hashedPassword = hashSync(user.password, salt);
+  user.password = hashedPassword;
   next();
 });
 
