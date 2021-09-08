@@ -8,6 +8,10 @@ require("express-async-errors"); // ayuda a capturar en un middleware las excepc
 
 const { NotFoundMiddleware, ErrorMiddleware } = require("../middlewares");
 
+const swaggerUI = require("swagger-ui-express");
+const { SWAGGER_PATH } = require("../config");
+const swaggerDocument = require(SWAGGER_PATH);
+
 module.exports = function ({
   HomeRoutes,
   UserRoutes,
@@ -32,11 +36,11 @@ module.exports = function ({
   apiRoutes.use("/comment", CommentRoutes);
   apiRoutes.use("/auth", AuthRoutes);
 
-
   apiRoutes.use(NotFoundMiddleware);
   apiRoutes.use(ErrorMiddleware);
 
   router.use("/v1/api", apiRoutes);
+  router.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
   // ESto lo tenemos que configurar una sola vez para cada una de las rutas
   // luego ya con la practica se vuelve mas facil.
 
