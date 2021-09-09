@@ -6,7 +6,7 @@ module.exports = function ({ IdeaController }) {
 
   router.get("", [ParseIntMiddleware],IdeaController.getAll);
   router.get("/:ideaId", IdeaController.get);
-  router.get("/:userId/all", IdeaController.getUserIdea);
+  router.get("/:userId/all", IdeaController.getUserIdeas);
   router.post("/", AuthMiddleware ,IdeaController.create);
   router.patch("/:ideaId", AuthMiddleware ,IdeaController.update);
   router.delete("/:ideaId", AuthMiddleware ,IdeaController.delete);

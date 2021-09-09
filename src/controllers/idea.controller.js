@@ -36,9 +36,9 @@ class IdeaController {
     return response.send(deleteIdea);
   }
 
-  async getUserIdea(request, response) {
+  async getUserIdeas(request, response) {
     const { userId } = request.params;
-    const ideas = await _ideaService.getUserIdea(userId);
+    const ideas = await _ideaService.getUserIdeas(userId);
     return response.send(ideas);
   }
 
